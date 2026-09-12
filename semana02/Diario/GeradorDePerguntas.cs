@@ -7,10 +7,17 @@ public class GeradorDePerguntas
 
     public GeradorDePerguntas()
     {
+        _perguntas.Add("Quem foi a pessoa mais interessante com quem interagi hoje?");
+        _perguntas.Add("Qual foi a melhor parte do meu dia?");
+        _perguntas.Add("Como vi a mao do Senhor em minha vida hoje?");
+        _perguntas.Add("Qual foi a emocao mais forte que senti hoje?");
+        _perguntas.Add("Se eu pudesse fazer uma coisa hoje, o que seria?");
     }
 
     public string ObterPerguntaAleatoria()
     {
-        return "";
+        Random random = new Random();
+        int indice = random.Next(_perguntas.Count);
+        return _perguntas[indice];
     }
 }
