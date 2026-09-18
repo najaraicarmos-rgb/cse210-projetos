@@ -17,22 +17,33 @@ public class Escritura
         }
     }
 
-    public void EsconderPalavrasAleatorias(int quantidade)
+    public void EsconderPalavrasAleatorias(int numeroParaEsconder)
     {
+        Random random = new Random();
+        List<Palavra> palavrasVisiveis = _palavras.Where(p => !p.EstaEscondida()).ToList();
+
+        int quantidadeParaEsconder = Math.Min(numeroParaEsconder, palavrasVisiveis.Count);
+
+        for (int i = 0; i < quantidadeParaEsconder; i++)
+        {
+            int indice = random.Next(palavrasVisiveis.Count);
+            palavrasVisiveis[indice].Esconder();
+            palavrasVisiveis.RemoveAt(indice);
+        }
     }
 
     public string ObterTexto()
     {
-        string resultado = _referencia.ObterTexto() + " - ";
-        foreach (Palavra p in _palavras)
+        string textoFormatado = _referencia.ObterTexto() + " - ";
+        foreach (Palavra palavra in _palavras)
         {
-            resultado += p.ObterTexto() + " ";
+            textoFormatado += palavra.ObterTexto() + " ";
         }
-        return resultado;
+        return textoFormatado.TrimEnd();
     }
 
     public bool EstaCompletamenteEscondida()
     {
-        return false;
+        return _palavras.All(p => p.EstaEscondida());
     }
 }

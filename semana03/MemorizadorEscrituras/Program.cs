@@ -1,6 +1,26 @@
 using MemorizadorEscrituras;
 
-Referencia ref1 = new Referencia("Proverbios", 3, 5, 6);
-Escritura esc1 = new Escritura(ref1, "Confia no Senhor de todo o teu coracao");
+Referencia referencia = new Referencia("Proverbios", 3, 5, 6);
+Escritura escritura = new Escritura(referencia, "Confia no Senhor de todo o teu coracao e nao te estribes no teu proprio entendimento.");
 
-Console.WriteLine(esc1.ObterTexto());
+while (true)
+{
+    Console.Clear();
+    Console.WriteLine(escritura.ObterTexto());
+    Console.WriteLine();
+
+    if (escritura.EstaCompletamenteEscondida())
+    {
+        break;
+    }
+
+    Console.WriteLine("Pressione Enter para continuar ou digite 'sair' para encerrar:");
+    string entrada = Console.ReadLine();
+
+    if (entrada.ToLower() == "sair")
+    {
+        break;
+    }
+
+    escritura.EsconderPalavrasAleatorias(3);
+}

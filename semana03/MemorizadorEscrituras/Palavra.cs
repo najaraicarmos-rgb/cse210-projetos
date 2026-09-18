@@ -30,7 +30,7 @@ public class Palavra
     {
         if (_estaEscondida)
         {
-            return "____";
+            return new string('_', _texto.Length);
         }
         return _texto;
     }
