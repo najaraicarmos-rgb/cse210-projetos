@@ -130,7 +130,6 @@ public class GoalManager
 
             if (goal is ChecklistGoal checklistGoal && checklistGoal.IsComplete())
             {
-                // Se completou a meta de checklist, podemos adicionar um comportamento extra se necessário
             }
 
             Console.WriteLine($"Parabéns! Você ganhou {pointsEarned} pontos!");
